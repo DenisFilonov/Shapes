@@ -12,10 +12,20 @@ namespace Temat_08pd
         public Circle()
         {
             _radius = 5;
+            Console.WriteLine("\tCircle added successfully!\n");
         }
         public Circle(double radius)
         {
-            _radius = radius;
+            if (radius > 0)
+            {
+                _radius = radius;
+                Console.WriteLine("\tCircle added successfully!\n");
+            }
+            else
+            {
+                Console.WriteLine("\tWrong value!");
+                return;
+            }
         }
         public double Radius 
         {
@@ -25,7 +35,15 @@ namespace Temat_08pd
             } 
             set
             {
-                _radius = value;
+                if (value > 0)
+                {
+                    _radius = value;
+                }
+                else
+                {
+                    Console.WriteLine("\tWrong value!");
+                    return;
+                }
             }
         }
         public override double ShapeArea()

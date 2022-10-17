@@ -32,7 +32,6 @@ namespace Temat_08pd
                         fval1 = Double.Parse(Console.ReadLine());
 
                         shapes.Add(new Square(fval1));
-                        Console.WriteLine("\tSquare added successfully!\n");
                         break;
 
                     case 2:
@@ -46,7 +45,6 @@ namespace Temat_08pd
                         fval3 = Double.Parse(Console.ReadLine());
 
                         shapes.Add(new Triangle(fval1, fval2, fval3));
-                        Console.WriteLine("\tTriangle added successfully!\n");
                         break;
 
                     case 3:
@@ -57,7 +55,6 @@ namespace Temat_08pd
                         fval2 = Double.Parse(Console.ReadLine());
 
                         shapes.Add(new Rectangle(fval1, fval2));
-                        Console.WriteLine("\tRectangle added successfully!\n");
                         break;
 
                     case 4:
@@ -65,7 +62,6 @@ namespace Temat_08pd
                         fval1 = Double.Parse(Console.ReadLine());
 
                         shapes.Add(new Circle(fval1));
-                        Console.WriteLine("\tCircle added successfully!\n");
                         break;
 
                     default:
@@ -77,52 +73,95 @@ namespace Temat_08pd
         }
         public void DelShape()
         {
-            int id;
-            Console.Write("Input the ID of the figure located in the system: ");
-            id = int.Parse(Console.ReadLine());
-
-            if (id >= 1 && id < shapes.Count)
+            if (shapes.Count != 0)
             {
-                shapes.RemoveAt(id - 1);
+                int id;
+                Console.Write("\nInput the ID of the figure located in the system: ");
+                id = int.Parse(Console.ReadLine());
+
+                if (id >= 1 && id <= shapes.Count)
+                {
+                    shapes.RemoveAt(id - 1);
+                    Console.WriteLine("\tThe shape deleted succesfully!");
+                }
+                else
+                {
+                    Console.WriteLine("\tWrong ID!\n");
+                }
             }
             else
             {
-                Console.WriteLine("\tWrong ID!\n");
+                Console.WriteLine("\n\tThere's no shapes in this list. Add new shape.");
             }
         }
         public void FindAreaOfFigure()
         {
-            int id;
-            Console.Write("\nInput the ID of the figure located in the system: ");
-            id = int.Parse(Console.ReadLine());
-            double result = shapes[id - 1].ShapeArea();
-            Console.WriteLine("\tResult: {0:F2}", result);
-            Console.WriteLine();
+            if (shapes.Count != 0)
+            {
+                int id;
+                Console.Write("\nInput the ID of the figure located in the system: ");
+                id = int.Parse(Console.ReadLine());
+                double result = shapes[id - 1].ShapeArea();
+                Console.WriteLine("\tResult: {0:F2}", result);
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("\n\tThere's no shapes in this list. Add new shape.");
+            }
         }
         public void FindPerimeterOfFigure()
         {
-            int id;
-            Console.Write("\nInput the ID of the figure located in the system: ");
-            id = int.Parse(Console.ReadLine());
-            double result = shapes[id - 1].ShapePerimeter();
-            Console.WriteLine("\tResult: {0:F2}", result);
-            Console.WriteLine();
+            if (shapes.Count != 0)
+            {
+                int id;
+                Console.Write("\nInput the ID of the figure located in the system: ");
+                id = int.Parse(Console.ReadLine());
+                double result = shapes[id - 1].ShapePerimeter();
+                Console.WriteLine("\tResult: {0:F2}", result);
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("\n\tThere's no shapes in this list. Add new shape.");
+            }
         }
         public void ShowShape()
         {
-            int id;
-            Console.Write("\nInput the ID of the figure located in the system: ");
-            id = int.Parse(Console.ReadLine());
-            Console.WriteLine();
-            shapes[id - 1].Show();
+            if (shapes.Count != 0)
+            {
+                int id;
+                Console.Write("\nInput the ID of the figure located in the system: ");
+                id = int.Parse(Console.ReadLine());
+                if (id > 0 && id <= shapes.Count)
+                {
+                    Console.WriteLine();
+                    shapes[id - 1].Show();
+                }
+                else
+                {
+                    Console.WriteLine("\n\tWrong ID entered!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\n\tThere's no shapes in this list. Add new shape.");
+            }
         }
         public void ShowAllShapes()
         {
-            for (int i = 0; i < shapes.Count; i++)
+            if (shapes.Count != 0)
             {
-                Console.WriteLine($"\n\tShape # {i + 1}");
-                shapes[i].Show();
-                Console.WriteLine();
+                for (int i = 0; i < shapes.Count; i++)
+                {
+                    Console.WriteLine($"\n\tShape # {i + 1}");
+                    shapes[i].Show();
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("\n\tThere's no shapes in this list. Add new shape.");
             }
         }
     }

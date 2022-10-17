@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -16,11 +17,37 @@ namespace Temat_08pd
         {
             _side1 = 10;
             _side2 = 5;
+            Console.WriteLine("\tRectangle added successfully!\n");
         }
         public Rectangle(double side1, double side2)
         {
-            _side1 = side1;
-            _side2 = side2;
+            int check = 0;
+            if (side1 > 0)
+            {
+                _side1 = side1;
+                check++;
+            }
+            else
+            {
+                Console.WriteLine("\tWrong value!");
+                return;
+            }
+
+            if (side2 > 0)
+            {
+                _side2 = side2;
+                check++;
+            }
+            else
+            {
+                Console.WriteLine("\tWrong value!");
+                return;
+            }
+
+            if (check == 2)
+            {
+                Console.WriteLine("\tRectangle added successfully!\n");
+            }
         }
         public double Side1
         {
@@ -30,7 +57,15 @@ namespace Temat_08pd
             }
             set
             {
-                _side1 = value;
+                if (value > 0)
+                {
+                    _side1 = value;
+                }
+                else
+                {
+                    Console.WriteLine("\tWrong value!");
+                    return;
+                }
             }
         }
         public double Side2
@@ -41,7 +76,15 @@ namespace Temat_08pd
             }
             set
             {
-                _side2 = value;
+                if (value > 0)
+                {
+                    _side2 = value;
+                }
+                else
+                {
+                    Console.WriteLine("\tWrong value!");
+                    return;
+                }
             }
         }
         public override double ShapeArea()

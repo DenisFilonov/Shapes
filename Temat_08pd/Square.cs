@@ -12,10 +12,20 @@ namespace Temat_08pd
         public Square()
         {
             _side = 4;
+            Console.WriteLine("\tSquare added successfully!\n");
         }
         public Square(double side)
         {
-            _side = side;
+            if (side > 0)
+            {
+                _side = side;
+                Console.WriteLine("\tSquare added successfully!\n");
+            }
+            else
+            {
+                Console.WriteLine("\tWrong value!");
+                return;
+            }
         }
         public double Side
         {
@@ -25,7 +35,15 @@ namespace Temat_08pd
             }
             set
             {
-                _side = value;
+                if (value > 0)
+                {
+                    _side = value;
+                }
+                else
+                {
+                    Console.WriteLine("\tWrong value!");
+                    return;
+                }
             }
         }
         public override double ShapeArea()
